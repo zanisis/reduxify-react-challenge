@@ -1,21 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {connect} from 'react-redux'
 
+import axios from 'axios'
+
+import Header from './components/Header.js'
+import ListHeroes from './components/HeroesList'
+import InputHeroes from './components/InputHeroes'
 class App extends Component {
+  
+  componentWillMount() {
+    axios.get('http://api.herostats.io/heroes/all')
+    .then(response=>{
+      this.props.fetchHeros({type: 'FETCH_HERO', payload : response.data})
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+  }
+
+  componentDidMount() {
+    //
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Header />
+        <InputHeroes />
+        <ListHeroes />
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch=>({
+  fetchHeros : (data) => dispatch(data)
+})
+
+export default connect(null, mapDispatchToProps)(App);
