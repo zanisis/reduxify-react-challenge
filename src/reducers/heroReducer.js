@@ -11,12 +11,14 @@ const addHero = (state, data)=>{
   return [...state, data]
 }
 
-const heroReducer = (state=[], action)=>{
+const initialState = []
+const heroReducer = (state=initialState, action)=>{
+
+  console.log('ini',initialState)
   switch (action.type) {
     case 'FETCH_HERO': return getHero(state ,action.payload)
     case 'ADD_HERO': return addHero(state ,action.payload)
     default: return state
-
   }
 }
 

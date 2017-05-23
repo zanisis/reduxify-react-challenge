@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
+
+
 class HeroesList extends Component {
+
+
+
   renderTBody(){
     return(
       <tbody>
@@ -12,7 +17,8 @@ class HeroesList extends Component {
             <td>{item.Name}</td>
             <td>{item.HP}</td>
           </tr>
-        )): 'Wait'}
+        )):<h1>Wait</h1>
+      }
       </tbody>
     )
   }
