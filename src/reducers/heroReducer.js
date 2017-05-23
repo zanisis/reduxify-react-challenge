@@ -1,9 +1,5 @@
-const getHero = (state, data)=>{
-  let newData = state
-  Object.keys(data).map(function(key, index) {
-    return newData.push(data[key]);
-  });
-  return newData
+const getHero = (data)=>{
+  return data
 }
 
 const addHero = (state, data)=>{
@@ -13,10 +9,8 @@ const addHero = (state, data)=>{
 
 const initialState = []
 const heroReducer = (state=initialState, action)=>{
-
-  console.log('ini',initialState)
   switch (action.type) {
-    case 'FETCH_HERO': return getHero(state ,action.payload)
+    case 'FETCH_HERO': return getHero(action.payload)
     case 'ADD_HERO': return addHero(state ,action.payload)
     default: return state
   }

@@ -1,0 +1,1 @@
+export const FETCH_HERO = 'FETCH_HERO'

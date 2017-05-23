@@ -11,14 +11,16 @@ class HeroesList extends Component {
     return(
       <tbody>
         {
-          this.props.heroList !== undefined ? this.props.heroList.map((item, index)=>(
-          <tr key={index}>
-            <td>{item.ID}</td>
-            <td>{item.Name}</td>
-            <td>{item.HP}</td>
-          </tr>
-        )):<h1>Wait</h1>
-      }
+          typeof this.props.heroList === 'object' ? Object.keys(this.props.heroList).map((item, index)=>(
+            <tr key={index}>
+              <td>{this.props.heroList[item].ID}</td>
+              <td>{this.props.heroList[item].Name}</td>
+              <td>{this.props.heroList[item].HP}</td>
+            </tr>
+          )):<tr>
+              <td>Wait</td>
+            </tr>
+        }
       </tbody>
     )
   }
